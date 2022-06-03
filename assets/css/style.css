@@ -36,9 +36,11 @@ textarea{
   border-top: 1px solid white;;
 }
 
-.hour {
+div.hour {
   background-color: #ffffff;
   color: #000000;
+}
+.time-block:not(:first-of-type) .hour {
   border-top: 1px dashed #000000;
 }
 
@@ -65,7 +67,12 @@ textarea{
   color: white;
 }
 
-.saveBtn i:hover {
+.saveBtn i {
   font-size: 20px;
   transition: all .3s ease-in-out;
+}
+
+.saveBtn:hover i {
+  font-size: 40px;
+  color: black;
 }
