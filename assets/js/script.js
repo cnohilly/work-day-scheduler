@@ -1,4 +1,4 @@
-var localStorageKey = 'work-day-scheduler-schedule';
+var localStorageKey = 'work-day-scheduler-schedule';    // name of the key for localstorage
 
 // sets the current day on the page in Day, Month Date format
 $('#currentDay').text(moment().format('dddd, MMMM Do'));
@@ -105,6 +105,14 @@ $('.schedule').on('click', '.saveBtn', function () {
 
     schedule.set(timeBlock, event);
     saveSchedule();
+});
+
+$('.delete-button').on('click',function(){
+    schedule = new Map();
+    saveSchedule();
+    $('.time-block').each(function(){
+        $(this).find('.event').text('');
+    });
 });
 
 
