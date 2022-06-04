@@ -1,9 +1,10 @@
 var localStorageKey = 'work-day-scheduler-schedule';    // name of the key for localstorage
+var schedule; // variable for map to hold events for given times
 
 // sets the current day on the page in Day, Month Date format
 $('#currentDay').text(moment().format('dddd, MMMM Do'));
 
-var schedule;
+
 // attempts to load scheduled events from local storage
 function loadSchedule() {
     // attempts to get saved events from localstorage - leaving it as an array at first
@@ -72,6 +73,7 @@ function createSchedule() {
         $('div.container').append(timeBlock);
     }
     colorSchedule();
+    loadSchedule();
 };
 
 function colorSchedule() {
@@ -92,14 +94,11 @@ function colorSchedule() {
     });
 };
 
-createSchedule();
-loadSchedule();
-
 $('.schedule').on('click', '.saveBtn', function () {
     // time block to be saved and event for given time block
     var timeBlock = $(this).parent('.time-block').attr('data-time-block');
     var event = $(this).parent('.time-block').find('.event').val();
-    
+
     // exits if there is no event to be saved
     if (!event) { return false; }
 
@@ -107,16 +106,13 @@ $('.schedule').on('click', '.saveBtn', function () {
     saveSchedule();
 });
 
-$('.delete-button').on('click',function(){
+$('.delete-button').on('click', function () {
     schedule = new Map();
     saveSchedule();
-    $('.time-block').each(function(){
+    $('.time-block').each(function () {
         $(this).find('.event').text('');
     });
 });
 
 
-// schedule.set('9','Drive to work');
-// schedule.set('10','Start project');
-// schedule.set('17','Clean up files');
-// saveSchedule();
+createSchedule();
