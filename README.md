@@ -38,6 +38,6 @@ The following animation is the supplied demonstration of the application functio
 
 The deployed application can be found [here](https://cnohilly.github.io/work-day-scheduler/)
 
-The following image is the finished application:
+The following image is the finished application (Screenshot taken at 5pm):
 
 ![Work Day Scheduler finished application](./assets/images/workday-schedule-application.jpg)
