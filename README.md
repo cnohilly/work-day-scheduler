@@ -1,8 +1,8 @@
 # 05 Third-Party APIs: Work Day Scheduler
 
-Create a simple calendar application that allows the user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+## Description
 
-The starter code uses the [Moment.js](https://momentjs.com/) library to work with date and time, but you're free to use a different JavaScript solution to handle this functionality because Moment.js is considered a "legacy" product. Learn more about these other solutions in the [Moment.js project status page.](https://momentjs.com/docs/#/-project-status/).
+In this project we had to create a page where it is a work day planner where the user can edit a text-area for each hour of the work day and click a button to save that event. We were provided a started HTML and CSS file that handled the majority of the styling and were required to write the necessary HTML, CSS, and JavaScript/jQuery to complete the application. The JavaScript/jQuery was written to build the schedule on the page and done so with a for loop to be dynamic and easily changed. In the HTML I added a button at the bottom that will delete all the events currently in the schedule. In the CSS I made minor styling changes to improve appearance. 
 
 ## User Story
 
@@ -30,17 +30,14 @@ WHEN I refresh the page
 THEN the saved events persist
 ```
 
-The following animation demonstrates the application functionality:
+The following animation is the supplied demonstration of the application functionality:
 
-![Work Day Scheduler app with color-coded time slots shows a new event being typed in the 5PM slot.](./Assets/05-third-party-apis-homework-demo.gif)
+![Work Day Scheduler app with color-coded time slots shows a new event being typed in the 5PM slot.](./assets/images/05-third-party-apis-homework-demo.gif)
 
-## Review
+## Product 
 
-You are required to submit the following for review:
+The deployed application can be found [here](https://cnohilly.github.io/work-day-scheduler/)
 
-* The URL of the deployed application.
+The following image is the finished application:
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
-
----
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+![Work Day Scheduler finished application](./assets/images/workday-schedule-application.jpg)

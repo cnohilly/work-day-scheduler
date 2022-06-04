@@ -33,7 +33,11 @@ textarea{
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;;
+  border-top: 1px solid white;
+}
+/* Removes border from the top row */
+.schedule .row:first-of-type{
+  border: none;
 }
 
 div.hour {
@@ -51,7 +55,7 @@ div.hour {
 
 .present {
   background-color: #ff6961;
-  color: white;
+  color: black;
 }
 
 .future {
@@ -67,10 +71,17 @@ div.hour {
   color: white;
 }
 
+/* TranslateY to keep icon more center on the button due to small
+    spacing on top apart of the icon itself */
+.saveBtn i {
+  transform: translateY(-15%);
+}
+
 .saveBtn i, .delete-button i {
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
+
 
 .saveBtn:hover i {
   font-size: 40px;

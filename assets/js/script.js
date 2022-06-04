@@ -34,14 +34,14 @@ function saveSchedule() {
 // function used to get text to display time
 function getTimeText(i) {
     var time;
-    if (i > 12) { // meant for any time from 1pm to 11pm
-        time = i % 12 + 'pm';
-    } else if (i == 12) { // meant for 12pm noon
-        time = i + 'pm';
-    } else if (i == 0) { // meant for 12am midnight
-        time = 12 + 'am'
-    } else {            // meant for 1am to 11am
-        time = i + 'am';
+    if ((i % 24) == 0){         // Checks for 12am Midnight
+        time = 12 + 'am';
+    } else if ((i % 12) == 0){  // Checks for 12pm Noon
+        time = 12 + 'pm';
+    } else if ((i % 24) > 12) { // Checks for after 12pm Noon
+        time = (i % 12) + 'pm';
+    } else {                    // Else it is before 12pm Noon
+        time = (i % 12) + 'am';
     }
     return time;
 }
@@ -49,26 +49,21 @@ function getTimeText(i) {
 // Generates the entire schedule on the page
 function createSchedule() {
     // loops to create the work schedule from hour 9 to 17 (9am to 5pm)
-    for (var i = 9; i < 18; i++) {
-        // if for loop attempts to go beyond 11pm or add a 25th hour
-        if (i > 23) {
-            console.log('Attempted to go beyond 24 hours (past 11pm).');
-            return false;
-        }
+    // can change to whatever hours desired
+    for (var i = 9; i <= 17; i++) {
         // creates the appropriate display for the time for - written to work if we change the hours desired for the schedule
         var timeText = getTimeText(i);
 
-
         var timeBlock = $('<div>').addClass('row time-block').attr('data-time-block', i);
         timeBlock.append(
-            $('<div>').addClass('hour col-1 justify-content-center align-items-center d-flex').text(timeText)
+            $('<div>').addClass('hour col-1 d-flex align-items-center justify-content-center').text(timeText)
         );
         timeBlock.append(
             $('<textarea>').addClass('event col-10')
         );
         timeBlock.append(
-            $('<button>').addClass('col-1 saveBtn d-flex')
-                .append($('<i>').addClass('bi bi-calendar-check-fill m-auto'))
+            $('<button>').addClass('btn col-1 saveBtn d-flex justify-content-center align-items-center')
+                .append($('<i>').addClass('bi bi-calendar-check-fill'))
         );
         $('div.container').append(timeBlock);
     }
@@ -94,6 +89,7 @@ function colorSchedule() {
     });
 };
 
+// Adds an event listener to the schedule container to listen for clicks on saveBtn
 $('.schedule').on('click', '.saveBtn', function () {
     // time block to be saved and event for given time block
     var timeBlock = $(this).parent('.time-block').attr('data-time-block');
@@ -106,6 +102,7 @@ $('.schedule').on('click', '.saveBtn', function () {
     saveSchedule();
 });
 
+// Sets click event for Delete Button to delete all events in the schedule
 $('.delete-button').on('click', function () {
     schedule = new Map();
     saveSchedule();
